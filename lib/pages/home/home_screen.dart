@@ -1,6 +1,9 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop/controllers/home_Controller.dart';
+import 'package:shop/pages/cart/cart_screen.dart';
 import 'package:shop/pages/home/components/Listbox.dart';
 import 'package:shop/pages/home/components/category.dart';
 
@@ -10,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: buildAppBar(context),
       backgroundColor: Colors.grey.shade100,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -166,7 +169,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  AppBar buildAppBar() {
+  AppBar buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
       centerTitle: true,
@@ -181,7 +184,13 @@ class HomeScreen extends StatelessWidget {
         IconButton(onPressed: () {}, icon: Icon(Icons.search)),
         IconButton(
             onPressed: () {}, icon: Icon(Icons.notifications_none_outlined)),
-        IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart_outlined)),
+        IconButton(onPressed: () {
+          
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => CartScreen(),
+              ));
+            
+        }, icon: Icon(Icons.shopping_cart_outlined)),
       ],
     );
   }

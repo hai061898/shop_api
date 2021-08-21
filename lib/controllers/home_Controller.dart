@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shop/api/api.dart';
+import 'package:shop/api/product_api.dart';
 
 class HomeController extends GetxController {
   ProductApi productApi = ProductApi();
