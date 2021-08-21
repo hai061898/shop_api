@@ -2,9 +2,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ProductApi {
-  var url = "https://fakestoreapi.com/products";
-  loadProduct() async {
-    var response = await http.get(Uri.parse(url));
+  var url = "https://fakestoreapi.com/products/category/";
+  loadProduct(String categoryName ) async {
+    var response = await http.get(Uri.parse(url + categoryName));
     return json.decode(response.body);
   }
 }

@@ -7,13 +7,10 @@ class HomeController extends GetxController {
   List products = [].obs;
   var showGrid = false.obs;
 
-  HomeController() {
-    loadProduct();
-  }
 
-  loadProduct() async {
+  loadProduct(String categoryName) async {
     loading(true);
-    products = await productApi.loadProduct();
+    products = await productApi.loadProduct(categoryName);
     loading(false);
   }
 
