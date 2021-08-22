@@ -2,10 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop/controllers/category_controller.dart';
 
-class CategoryList extends StatelessWidget {
-  final CategoriesController categoryController =
-      Get.put(CategoriesController());
+// class CategoryList extends StatelessWidget {
+//   final CategoriesController categoryController =
+//       Get.put(CategoriesController());
 
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       height: 35,
+//       margin: EdgeInsets.only(top: 16),
+//       child: ListView.builder(
+//         itemCount: categoryController.categories.length,
+//         scrollDirection: Axis.horizontal,
+//         itemBuilder: (context, index) => Obx(
+//           () => InkWell(
+//             onTap: () {
+//               categoryController.changeCategories(index);
+//             },
+//             child: Container(
+//               margin: EdgeInsets.only(right: 8),
+//               decoration: BoxDecoration(
+//                 borderRadius: BorderRadius.circular(4.0),
+//                 color: index == categoryController.currentIndex.value ? Colors.black87 : Colors.transparent,
+//               ),
+//               padding: EdgeInsets.symmetric(
+//                 horizontal: 16.0,
+//                 vertical: 8.0,
+//               ),
+//               child: Text(
+//                categoryController.categories[index],
+//                 style: TextStyle(
+//                   color: index == categoryController.currentIndex.value? Colors.white : Colors.black,
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class CategoryList extends StatefulWidget {
+  const CategoryList({Key? key}) : super(key: key);
+
+  @override
+  _CategoryListState createState() => _CategoryListState();
+}
+
+class _CategoryListState extends State<CategoryList> {
+    final CategoriesController categoryController =
+      Get.put(CategoriesController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,16 +70,20 @@ class CategoryList extends StatelessWidget {
               margin: EdgeInsets.only(right: 8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4.0),
-                color: index == categoryController.currentIndex.value ? Colors.black87 : Colors.transparent,
+                color: index == categoryController.currentIndex.value
+                    ? Colors.black87
+                    : Colors.transparent,
               ),
               padding: EdgeInsets.symmetric(
                 horizontal: 16.0,
                 vertical: 8.0,
               ),
               child: Text(
-               categoryController.categories[index],
+                categoryController.categories[index],
                 style: TextStyle(
-                  color: index == categoryController.currentIndex.value? Colors.white : Colors.black,
+                  color: index == categoryController.currentIndex.value
+                      ? Colors.white
+                      : Colors.black,
                 ),
               ),
             ),
