@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop/controllers/auth_controller.dart';
 import 'package:shop/controllers/category_controller.dart';
 
 import 'package:shop/pages/cart/cart_screen.dart';
 import 'package:shop/pages/home/components/Listbox.dart';
 import 'package:shop/pages/home/components/category.dart';
+import 'package:shop/pages/splash/slash_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  // final HomeController controller = Get.put(HomeController());
+
   final CategoriesController categorycontroller =
       Get.put(CategoriesController());
+
+  final AuthController authController = AuthController();
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +196,12 @@ class HomeScreen extends StatelessWidget {
       actions: [
         IconButton(onPressed: () {}, icon: Icon(Icons.search)),
         IconButton(
-            onPressed: () {}, icon: Icon(Icons.notifications_none_outlined)),
+            onPressed: () {
+              authController.logout();
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => SplashScreen()),
+              );
+            }, icon: Icon(Icons.logout_outlined)),
         IconButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
